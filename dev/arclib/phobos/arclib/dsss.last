@@ -1,0 +1,6 @@
+name=arclib
+version=0.2
+
+[arc]
+target=arc
+buildflags=-O -release -inline

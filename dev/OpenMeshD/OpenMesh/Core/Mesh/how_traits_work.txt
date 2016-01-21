@@ -1,0 +1,75 @@
+﻿
+You say in your code:
+
+alias TriMesh_ArrayKernelT(TRAITS/*=DefaultTraits*/) MyMesh;
+
+
+Which is this:
+
+class TriMesh_ArrayKernelT(TRAITS = DefaultTraits)
+    : TriMesh_ArrayKernel_GeneratorT!(Traits).Mesh
+{
+}
+
+And the generator is: 
+
+struct TriMesh_ArrayKernel_GeneratorT(TRAITS)
+{
+    alias FinalMeshItemsT!(TRAITS, true)               MeshItems;
+    alias AttribKernelT!(MeshItems, TriConnectivity)   AttribKernel;
+    alias TriMeshT!(AttribKernel)                      Mesh;
+}
+
+Notice the chaining.
+Mesh in the end is:
+  TriMeshT!( AttribKernelT!( FinalMeshItemsT( TRAITS, istrimesh ) ) )
+
+FinalMeshItemsT takes the following from TRAITS:
+  types:  Point,Normal,Color,TexCoord?D,and {Vertex,..}Handle
+  enums:  VertexAttributes...
+  and defines VertexData etc as TRAITS.VertexT!(ITraits, Refs)
+           (ITraits is empty)
+
+VertexT,FaceT etc supposted to derive from the first argument (ITraits).
+
+
+It doesn't seem the interitance in the VertexT's are really used
+except for when using the MergeTraits template.  Not sure what that's
+needed for.
+
+
+BUT user Traits needs to define _everything_ that DefaultTraits does,
+(Basically implement its concept)
+So it really makes sense to use derivation, but polymorphism isn't
+necessary.  An overlay is needed.
+
+In fact Traits are NEVER instantiated anywhere.  The Traits.VertexT et al 
+are what get instantiated.  And those don't use the inheritance.
+
+So initially I made Traits structs, but in the end their Classes now.
+That gives us the inheritance we need, and there are no instantiation
+issuse because they're never instantiated.  In fact I could 
+probably even make DefaultTraits an abstract base class.
+
+
+
+---------
+
+
+The basic class hierarchy:
+
+ CONCRETE CLASSES
+
+    BaseKernel                   
+        |                
+    ArrayKernel
+        |
+  PolyConnectivity      TEMPLATE CLASSES                TYPICAL ASSIGNMENT
+        |
+  TriConnectivity    ~~   Connectivity                 [==Poly/TriConnectivity]
+                               |
+              AttribKernelT(MeshItems,Connectivity)    [MeshItems==FinalMeshItems]
+                               |
+                       PolyMeshT(Kernel)               [Kernel==AttribKernelT]
+                               |
+                       TriMeshT(Kernel)

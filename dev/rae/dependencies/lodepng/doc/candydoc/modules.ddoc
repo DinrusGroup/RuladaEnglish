@@ -1,0 +1,6 @@
+MODULES =
+	$(MODULE_FULL lodepng.Encode)
+	$(MODULE_FULL lodepng.util)
+	$(MODULE_FULL lodepng.Decode)
+	$(MODULE_FULL lodepng.Common)
+	$(MODULE_FULL lodepng.ZlibCodec)

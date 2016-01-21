@@ -1,0 +1,17 @@
+syntax: glob
+
+*.a
+*.o
+*.obj
+*.swp
+*.map
+*.exe
+*.bak
+
+syntax: regexp
+^build.sh$
+^dsss_objs
+^dsss.last
+^dsss_imports
+^DD-dwtx.lib$
+

@@ -1,0 +1,14 @@
+name=dbi
+
+[test/mysql.d]
+version (dbi_mysql) {
+    buildflags += -L-lmysqlclient -L-ldl
+}
+target=testddbi
+
+[dbi]
+version (dbi_mysql) {
+    buildflags += -L-lmysqlclient -d
+}
+target=dbi
+

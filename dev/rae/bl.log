@@ -1,0 +1,92 @@
+Creating imports for DD-rae
+
+rae => DD-rae
+rae\ui\Window.d(92): module GLConfig cannot read file 'glgdk\GLConfig.d'
+Command c:\dm\bin\rebuild.exe returned with code 1, aborting.
+Creating imports for DD-rae
+
+rae => DD-rae
+rae\ui\Window.d(87): module VBox cannot read file 'gtkD\gtkD\gtk\VBox.d'
+Command c:\dm\bin\rebuild.exe returned with code 1, aborting.
+Creating imports for DD-rae
+
+rae => DD-rae
+rae\ui\Window.d(92): module GLConfig cannot read file 'glgdk\GLConfig.d'
+Command c:\dm\bin\rebuild.exe returned with code 1, aborting.
+Creating imports for DD-rae
+
+rae => DD-rae
+rae\ui\Window.d(104): module DrawingArea cannot read file 'gtk\DrawingArea.d'
+Command c:\dm\bin\rebuild.exe returned with code 1, aborting.
+Creating imports for DD-rae
+
+rae => DD-rae
+rae\ui\Window.d(122): module PgContext cannot read file 'pango\PgContext.d'
+Command c:\dm\bin\rebuild.exe returned with code 1, aborting.
+Creating imports for DD-rae
+
+rae => DD-rae
+rae\canvas\Draw.d(48): module FontOption cannot read file 'cairo\FontOption.d'
+Command c:\dm\bin\rebuild.exe returned with code 1, aborting.
+Creating imports for DD-rae
+
+rae => DD-rae
+rae\core\Timeout.d(31): module Timeout cannot read file 'gtk\Timeout.d'
+Command c:\dm\bin\rebuild.exe returned with code 1, aborting.
+Creating imports for DD-rae
+
+rae => DD-rae
+rae\Rae.d(69): module Main cannot read file 'gtk\Main.d'
+Command c:\dm\bin\rebuild.exe returned with code 1, aborting.
+Creating imports for DD-rae
+
+rae => DD-rae
+rae\ui\Menu.d(54): module gl cannot read file 'gtkglc\gl.d'
+Command c:\dm\bin\rebuild.exe returned with code 1, aborting.
+Creating imports for DD-rae
+
+rae => DD-rae
+rae\ui\Entry.d(56): module gl cannot read file 'gtkglc\gl.d'
+Command c:\dm\bin\rebuild.exe returned with code 1, aborting.
+Creating imports for DD-rae
+
+rae => DD-rae
+rae\ui\Paned.d(50): module gl cannot read file 'gtkglc\gl.d'
+Command c:\dm\bin\rebuild.exe returned with code 1, aborting.
+Creating imports for DD-rae
+
+rae => DD-rae
+rae\ui\Paned.d(50): module gl cannot read file 'gtkglc\gl.d'
+Command d:\dinrus\bin\rebuild.exe returned with code 1, aborting.
+Creating imports for DD-rae
+
+rae => DD-rae
+rae\ui\Paned.d(50): module gl cannot read file 'gtkglc\gl.d'
+Command d:\dinrus\bin\rebuild.exe returned with code 1, aborting.
+Creating imports for DD-rae
+
+rae => DD-rae
+rae\ui\Paned.d(50): module gl cannot read file 'gtkglc\gl.d'
+Command d:\dinrus\bin\rebuild.exe returned with code 1, aborting.
+
+	_______________________________________
+         Язык Программирования Динруc
+	Авторское право 2012-2015 Лицензия GPL
+	     Разработчик Виталий Кулич		      
+	Сайт проекта: http://www.dinrus.gixx.ru	
+	_______________________________________
+	
+	
+Аргументы запуска DSSS: build -full 
+
+Дом=D:\Dinrus\bin
+форсПрефикс =
+форсПрефикс=D:\Dinrus\bin
+сссБазовоеРасп =D:\Dinrus\bin\..\imp\dinrus\dsss
+ребилд =D:\Dinrus\bin\rebuild.exe
+бинПрефикс =D:\Dinrus\bin
+либПрефикс =D:\Dinrus\bin\..\lib
+инклюдПрефикс =D:\Dinrus\bin\..\imp\dinrus
+докПрефикс =D:\Dinrus\bin\..\imp\dinrus\dsss\doc
+префиксМанифеста =D:\Dinrus\bin\..\imp\dsss\dsss\manifest
+этцетераПрефикс =D:\Dinrus\bin\..\etc

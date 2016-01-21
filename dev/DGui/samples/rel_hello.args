@@ -1,0 +1,8 @@
+hello.d
+..\dgui\build\release\dgui.lib
+-L/SUBSYSTEM:windows:4
+-O
+-release
+-odobj
+-ofhello.exe
+-I..

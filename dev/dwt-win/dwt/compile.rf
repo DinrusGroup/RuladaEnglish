@@ -1,0 +1,16 @@
+-c
+dwt\custom\AnimatedProgress.d
+-ofdsss_objs\D\dwt-custom-AnimatedProgress.obj
+-Id:/dinrus/bin\..\include\d
+-Idsss_imports\
+-I.
+-L-L.\
+-Id:\dinrus\include\d
+-L-Ld:\dinrus\lib\
+-Id:\dinrus\include\d
+-L-Ld:\dinrus\lib
+-Jd:\dm\lib\res
+-d
+-ID:\Dinrus\bin\..\imp\rulada
+-O
+-version=Rulada

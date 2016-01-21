@@ -1,0 +1,8 @@
+rawbitmap.d
+..\dgui\build\debug\dgui_dbg.lib
+-L/SUBSYSTEM:windows:4
+-g
+-debug
+-odobj
+-ofrawbitmap.exe
+-I..

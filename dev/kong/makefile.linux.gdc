@@ -1,0 +1,57 @@
+DCC = gdc
+CC = gcc
+AR  = ar
+OBJS = kong/internal/mine.o kong/internal/image_interface.o kong/process.o kong/win32/DSO.o kong/PE/PE.o kong/hooking.o kong/internal/memory_region.o kong/internal/stdlib.o kong/internal/dynamic_object.o kong/ELF/hook_api.o kong/ELF/ELF.o kong/internal/hook_interface.o kong/linux/DSO.o kong/linux/memory_layout.o kong/linux/memory_protect.o kong/IA32/hook_code.o kong/IA32/X86IL.o kong/internal/image_reflect.o kong/PE/types.o kong/ELF/types.o
+
+RELEASE_LIB = kong.a
+DEBUG_LIB   = kong_debug.a
+THIS = makefile.linux.gdc
+
+all: release
+
+obj:
+	$(DCC) $(FLAGS) -c kong/process.d -o kong/process.o
+	$(DCC) $(FLAGS) -c kong/hooking.d -o kong/hooking.o
+	$(DCC) $(FLAGS) -c kong/internal/image_reflect.d -o kong/internal/image_reflect.o
+	$(DCC) $(FLAGS) -c kong/internal/stdlib.d -o kong/internal/stdlib.o
+	$(DCC) $(FLAGS) -c kong/internal/memory_region.d -o kong/internal/memory_region.o
+	$(DCC) $(FLAGS) -c kong/internal/hook_interface.d -o kong/internal/hook_interface.o
+	$(DCC) $(FLAGS) -c kong/internal/dynamic_object.d -o kong/internal/dynamic_object.o
+	$(DCC) $(FLAGS) -c kong/internal/image_interface.d -o kong/internal/image_interface.o
+	$(DCC) $(FLAGS) -c kong/ELF/hook_api.d -o kong/ELF/hook_api.o
+	$(DCC) $(FLAGS) -c kong/ELF/ELF.d -o kong/ELF/ELF.o
+	$(DCC) $(FLAGS) -c kong/PE/PE.d -o kong/PE/PE.o
+	$(DCC) $(FLAGS) -c kong/linux/DSO.d -o kong/linux/DSO.o
+	$(DCC) $(FLAGS) -c kong/linux/memory_layout.d  -o kong/linux/memory_layout.o
+	$(DCC) $(FLAGS) -c kong/linux/memory_protect.d -o kong/linux/memory_protect.o
+	$(DCC) $(FLAGS) -c kong/win32/DSO.d -o kong/win32/DSO.o
+	$(DCC) $(FLAGS) -c kong/IA32/hook_code.d -o kong/IA32/hook_code.o
+	$(DCC) $(FLAGS) -c kong/IA32/X86IL.d -o kong/IA32/X86IL.o
+	$(DCC) $(FLAGS) -c kong/internal/mine.d -o kong/internal/mine.o
+	$(DCC) $(FLAGS) -c kong/ELF/types.d -o kong/ELF/types.o
+	$(DCC) $(FLAGS) -c kong/PE/types.d -o kong/PE/types.o
+		
+
+unit:
+	make -f $(THIS) obj FLAGS=-g
+	$(DCC) -g -ldl $(OBJS) kong/unit_test.d -o unit_test
+
+
+release:
+	make -f $(THIS) obj FLAGS="-frelease -Os"
+	$(AR) rcs $(RELEASE_LIB) $(OBJS)
+	size kong.a
+	
+debug: 
+	make -f $(THIS) obj FLAGS=-g
+	$(AR) rcs $(DEBUG_LIB) $(OBJS)
+
+kong.a: release
+
+example: $(RELEASE_LIB)
+	$(DCC) -frelease kong/examples/import_dephook.d kong.a -o import_dephook
+	$(DCC) -frelease kong/examples/import_dump.d kong.a -o import_dump
+	$(DCC) -frelease kong/examples/elf_dump.d kong.a -o elf_dump
+
+clean:
+	rm -f $(OBJS) elf_dump import_dump import_dephook unit_test $(RELEASE_LIB) $(DEBUG_LIB)

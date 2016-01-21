@@ -1,0 +1,6 @@
+name = std2
+
+[std2]
+target=std2
+exclude = std2/typecons.d
+buildflags += -O -Lrulada.lib

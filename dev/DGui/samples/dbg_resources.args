@@ -1,0 +1,9 @@
+resources.d
+resource.res
+..\dgui\build\debug\dgui_dbg.lib
+-L/SUBSYSTEM:windows:4
+-g
+-debug
+-odobj
+-ofresources.exe
+-I..
